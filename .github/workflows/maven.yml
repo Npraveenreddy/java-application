@@ -30,7 +30,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
         image: praveen10623/java-app
-        tag: v1, latest
+        tag: v2, latest2
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
