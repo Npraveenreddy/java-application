@@ -26,10 +26,28 @@ jobs:
       run: mvn -B package --file pom.xml
     
     - name: Build and PushDocker Image
-      uses: kyberorg/wait_for_harbor@v0.1
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: 54.152.151.31/praveen
-        tags: v1, latest
+        image: praveen10623/java-app
+        tags: v4, latest4
         registry: praveen
-        username: ${{ secrets.DOCKER_USERNAME1 }}
-        password: ${{ secrets.DOCKER_PASSWORD1 }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Cache SonarQube packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Build and analyze
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=new
