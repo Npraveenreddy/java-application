@@ -32,3 +32,4 @@ jobs:
          password: ${{ secrets.DOCKER_PASSWORD1 }}
          docker image build -t prav:latest
          docker tag praveen:latest 54.152.151.31/praveen/praveen:latest
+         docker push 54.152.151.31/praveen/praveen:latest
