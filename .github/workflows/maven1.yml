@@ -41,6 +41,7 @@ jobs:
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
         
+        
     - name: Cache Maven packages
       uses: actions/cache@v1
       with:
