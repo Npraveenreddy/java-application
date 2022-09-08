@@ -28,9 +28,11 @@ jobs:
       
     - name: Build and PushDocker Image
       uses: kyberorg/wait_for_harbor@v0.1
-      
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag 54.152.151.31/praveen
-    
-    - name: Docker Push
-      run: docker push 54.152.151.31/praveen/
+      with:
+       hostname: http://54.152.151.31:80/
+       robot: ${{ secrets.DOCKER_USERNAME1 }}
+       token: ${{ secrets.DOCKER_PASSWORD1 }}
+       imageProject: http://54.152.151.31/harbor/projects/praveen/myImage:latest
+       imageRepo: http://54.152.151.31/harbor/projects/praveen/myImage:latest
+       imageTag: 1.1
+       imageSha: sha256:aafdsgwqetwqtwqt
