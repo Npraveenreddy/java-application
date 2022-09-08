@@ -28,9 +28,9 @@ jobs:
       
     - name: Build and PushDocker Image
       uses: kyberorg/wait_for_harbor@v0.1
-      with:
-        image: praveen/
-        imageTag: v2, latest2
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME1 }}
-        password: ${{ secrets.DOCKER_PASSWORD1 }}
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag 54.152.151.31/praveen
+    
+    - name: Docker Push
+      run: docker push 54.152.151.31/praveen/
