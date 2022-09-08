@@ -25,14 +25,10 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
+    
     - name: Build and PushDocker Image
-      uses: kyberorg/wait_for_harbor@v0.1
-      with:
-       hostname: 'my.harbor.com'
-       robot: 'robot+name'
-       token: robottokenhere
-       imageProject: praveen
-       imageRepo: myImage
-       imageTag: 1.1
-       imageSha: 54.152.151.31/praveen
+      run : |
+         username: ${{ secrets.DOCKER_USERNAME1 }}
+         password: ${{ secrets.DOCKER_PASSWORD1 }}
+         docker image build -t prav:latest
+         docker tag praveen:latest 54.152.151.31/praveen/praveen:latest
