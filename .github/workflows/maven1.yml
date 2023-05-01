@@ -21,8 +21,16 @@ jobs:
     - name: Create log file
       run: echo "This is a log message" > my_log_file.txt
 
-    - name: Print logs directory
-      run: echo "Logs directory:${{ github.workspace }}/_diag"
-      
+    - name: Upload log file
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-log-file
+        path: my_log_file.txt
+        
+    - name: Download log file
+      uses: actions/download-artifact@v2
+      with:
+       name: my-log-file
+
     - name: Print log file contents
-      run: cat ${{ github.workspace }}/_diag/*.log
+      run: cat my_log_file.txt
