@@ -19,4 +19,4 @@ jobs:
     - name: logs
       run: |
         pwd
-        ls -lrt /home/runner/work/java-application/java-application
+        ls -lrt /home/runner
