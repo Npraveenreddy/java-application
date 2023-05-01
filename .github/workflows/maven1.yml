@@ -26,5 +26,7 @@ jobs:
 
     - name: Download runner logs
       if: ${{ always() }}
+      env:
+        GITHUB_TOKEN: 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
       run: |
-        curl -sSfL https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/logs > runner_logs.txt
+        curl -sSfL -H "Authorization: token ${{ env.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/logs > runner_logs.txt
