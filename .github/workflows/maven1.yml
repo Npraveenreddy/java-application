@@ -16,7 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: logs
-      run: |
-        pwd
-        ls -lrt /home/runner/runners
+    - name: Print logs directory
+      run: echo "${{ runner.temp }}/logs"
+
