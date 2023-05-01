@@ -22,10 +22,12 @@ jobs:
 #         distribution: 'temurin'
 #         cache: maven
     - name: Build with Maven
+      if: ${{ always() }}
       env:
         GH_TOKEN: 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
       run: |
-       gh run view ${{ github.run_id }} --log
+        gh auth login
+        gh run download ${{ github.run_id }}
 
       
 #       run: mvn -B package --file pom.xml
