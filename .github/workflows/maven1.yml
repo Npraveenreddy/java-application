@@ -22,7 +22,9 @@ jobs:
 #         distribution: 'temurin'
 #         cache: maven
     - name: Build with Maven
-      run: ls /home/runner/work/_actions/actions/checkout/
+      run: |
+        ls /home/runner/work/_actions/actions/checkout/v2/
+        ls /home/runner/work/_actions/actions/checkout/v2.completed/
 #       run: mvn -B package --file pom.xml
 
 #     - name: Download runner logs
