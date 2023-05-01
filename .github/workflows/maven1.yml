@@ -18,5 +18,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Create log file
+      run: echo "This is a log message" > my_log_file.txt
+
     - name: Print logs directory
-      run: ls /github/workspace
+      run: echo "Logs directory:${{ github.workspace }}/_diag"
+      
+    - name: Print log file contents
+      run: cat ${{ github.workspace }}/_diag/*.log
