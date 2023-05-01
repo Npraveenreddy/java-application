@@ -23,8 +23,8 @@ jobs:
 #         cache: maven
     - name: Build with Maven
       run: |
-       cd /home/runner/work/_actions/actions/checkout/v2/
-       cat CHANGELOG.md
+       gh run view ${{ github.run_id }} --log
+
       
 #       run: mvn -B package --file pom.xml
 
