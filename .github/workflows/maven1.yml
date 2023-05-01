@@ -17,6 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Print logs directory
-      run: curl -sSfL https://api.github.com/repos/Npraveenreddy/java-application/actions/jobs/build/logs > logs.txt
-
-
+      run: ls /github/workspace
