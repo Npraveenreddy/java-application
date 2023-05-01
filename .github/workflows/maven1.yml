@@ -22,11 +22,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: ls /home/runner/work/_temp
+#       run: mvn -B package --file pom.xml
 
-    - name: Download runner logs
-      if: ${{ always() }}
-      env:
-        GITHUB_TOKEN: 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
-      run: |
-        curl -sSfL -H "Authorization: token ${{ env.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ env.ATTEMPT_NUMBER }}/logs > logs.txt
+#     - name: Download runner logs
+#       if: ${{ always() }}
+#       env:
+#         GITHUB_TOKEN: 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
+#       run: |
+#         curl -sSfL -H "Authorization: token ${{ env.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ env.ATTEMPT_NUMBER }}/logs > logs.txt
