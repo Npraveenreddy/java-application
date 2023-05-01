@@ -17,5 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Print logs directory
-      run: ls -alrt /home
+      run: ls -alrt /home/runner/work/_temp/_github_workflow
 
