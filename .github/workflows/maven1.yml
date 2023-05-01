@@ -33,4 +33,4 @@ jobs:
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer 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"\
         -H "X-GitHub-Api-Version: 2022-11-28" \
-         https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/logs > runner_logs.txt
+         https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/attempts/${{ env.ATTEMPT_NUMBER }}/logs > logs.txt
