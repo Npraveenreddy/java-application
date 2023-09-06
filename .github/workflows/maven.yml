@@ -42,6 +42,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          distribution: 'adopt'
+        env:
+          JAVA_HOME: ${{ steps.java-setup.outputs.java-home }}
+          HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+          HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
