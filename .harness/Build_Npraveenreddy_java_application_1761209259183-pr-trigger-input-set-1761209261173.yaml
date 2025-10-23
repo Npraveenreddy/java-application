@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Npraveenreddy_java_application_1761209259183-pr-trigger-input-set
+  identifier: Build_Npraveenreddy_java_application_1761209259183prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: test
+  pipeline:
+    identifier: Build_Npraveenreddy_java_application_1761209259183
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
